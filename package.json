@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/watergis/vt-boilerplate#readme",
   "dependencies": {
-    "@watergis/mbtiles2pbf": "^0.2.1",
     "@watergis/postgis2mbtiles": "^0.1.5",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
