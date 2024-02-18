@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/watergis/vt-boilerplate#readme",
   "dependencies": {
-    "@watergis/postgis2geojson": "^0.1.7",
+    "@watergis/postgis2geojson": "^0.2.0",
     "dotenv": "^16.4.4",
     "gh-pages": "^6.1.1"
   }
