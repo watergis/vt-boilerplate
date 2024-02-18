@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create": "node index.js",
+    "create": "node src/index.js",
     "docker": "docker-compose up",
-    "extract": "node extract.js",
+    "extract": "node src/extract.js",
     "deploy": "gh-pages -d public"
   },
   "repository": {
@@ -27,9 +27,8 @@
   },
   "homepage": "https://github.com/watergis/vt-boilerplate#readme",
   "dependencies": {
-    "@watergis/postgis2mbtiles": "^0.1.6",
-    "dotenv": "^16.0.3",
-    "fs": "0.0.1-security",
-    "gh-pages": "^5.0.0"
+    "@watergis/postgis2geojson": "^0.2.0",
+    "dotenv": "^16.4.4",
+    "gh-pages": "^6.1.1"
   }
 }

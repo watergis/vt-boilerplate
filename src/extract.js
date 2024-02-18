@@ -2,9 +2,9 @@ const { execSync } = require('child_process');
 
 const fs = require('fs');
 
-const config = require('./config');
+const config = require('../config');
 
-const extract = async() =>{
+const extract = () =>{
     console.time('mbtiles2pbf');
     if (!fs.existsSync(config.mbtiles)){
         console.log(`${config.mbtiles} does not exists. Skipped!`);

@@ -1,7 +1,6 @@
 # Start from ubuntu
-FROM node:lts-bullseye
+FROM node:20 AS tippecanoe-builder
 
-# Update repos and install dependencies
 RUN apt-get update \
   && apt-get -y upgrade \
   && apt-get -y install \
@@ -10,17 +9,23 @@ RUN apt-get update \
   zlib1g-dev \
   git
 
-# Build tippecanoe
-RUN mkdir -p /tmp/src
-WORKDIR /tmp/src
 RUN git clone https://github.com/felt/tippecanoe.git
-WORKDIR /tmp/src/tippecanoe
-RUN make \
-    && make install
+WORKDIR tippecanoe
+RUN make
+
+FROM node:20-slim
+
+RUN apt-get update \
+  && apt-get -y upgrade \
+  && apt-get -y install \
+  libsqlite3-dev
+
+COPY --from=tippecanoe-builder /tippecanoe/tippecanoe* /usr/local/bin/
+COPY --from=tippecanoe-builder /tippecanoe/tile-join /usr/local/bin/
+
+WORKDIR /tmp/src
 
 # Install postgis2mbtiles-docker
-RUN mkdir -p /tmp/src
-WORKDIR /tmp/src
 COPY . /tmp/src
 RUN npm install
 
