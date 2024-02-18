@@ -1,7 +1,7 @@
-const {postgis2mbtiles} = require('@watergis/postgis2mbtiles');
+const postgis2mbtiles = require('./postgis2mbtiles');
 const {postgis2geojson} = require('@watergis/postgis2geojson');
-const config = require('./config');
-const configSearch = require('./config-search');
+const config = require('../config');
+const configSearch = require('../config-search');
 
 const generate = async () =>{
     console.time('postgis2mbtiles');
