@@ -18,9 +18,19 @@ class postgis2mbtiles {
     if (fs.existsSync(mbtiles)) {
       fs.unlinkSync(mbtiles);
     }
-    const cmd = `tippecanoe -rg -z${this.config.maxzoom} -Z${
-      this.config.minzoom
-    } --name="${this.config.name}" --description="${this.config.description}" --attribution="${this.config.attribution}" -o ${mbtiles} ${geojsonfiles.join(' ')}`;
+    const cmd = `
+    tippecanoe \
+    --no-feature-limit \
+    --simplify-only-low-zooms \
+    --detect-shared-borders \
+    --read-parallel \
+    --no-tile-size-limit \
+    --no-tile-compression \
+    --force \
+    --name="${this.config.name}"  \
+    --description="${this.config.description}" \
+    --attribution="${this.config.attribution}" \
+    -o ${mbtiles} ${geojsonfiles.join(' ')}`;
 
     execSync(cmd).toString();
 

@@ -15,6 +15,12 @@ RUN make
 
 FROM node:20-slim
 
+ARG db_user
+ARG db_password
+ARG db_host
+ARG db_port
+ARG db_name
+
 RUN apt-get update \
   && apt-get -y upgrade \
   && apt-get -y install \
@@ -27,6 +33,7 @@ WORKDIR /tmp/src
 
 # Install postgis2mbtiles-docker
 COPY . /tmp/src
+RUN npm install -g npm@latest
 RUN npm install
 
 RUN chmod a+x /tmp/src/entrypoint.sh
