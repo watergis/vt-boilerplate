@@ -1,6 +1,6 @@
 {
   "name": "vt",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This is to manage vectortiles for water services providers in Github pages.",
   "main": "index.js",
   "scripts": {
