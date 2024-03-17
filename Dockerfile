@@ -1,6 +1,8 @@
 # Start from ubuntu
 FROM node:20 AS tippecanoe-builder
 
+ENV TIPPECANOE_VERSION=2.24.0
+
 RUN apt-get update \
   && apt-get -y upgrade \
   && apt-get -y install \
@@ -9,7 +11,7 @@ RUN apt-get update \
   zlib1g-dev \
   git
 
-RUN git clone https://github.com/felt/tippecanoe.git
+RUN git clone https://github.com/felt/tippecanoe.git -b $TIPPECANOE_VERSION
 WORKDIR tippecanoe
 RUN make
 

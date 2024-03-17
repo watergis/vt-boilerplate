@@ -18,6 +18,9 @@ class postgis2mbtiles {
     if (fs.existsSync(mbtiles)) {
       fs.unlinkSync(mbtiles);
     }
+
+    execSync(`tippecanoe -v`);
+
     const cmd = `
     tippecanoe \
     --no-feature-limit \
@@ -32,7 +35,9 @@ class postgis2mbtiles {
     --attribution="${this.config.attribution}" \
     -o ${mbtiles} ${geojsonfiles.join(' ')}`;
 
-    execSync(cmd).toString();
+    console.log(cmd)
+
+    execSync(cmd);
 
     geojsonfiles.forEach((f) => {
       fs.unlinkSync(f);
