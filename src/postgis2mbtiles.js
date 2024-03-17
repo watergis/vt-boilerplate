@@ -30,6 +30,8 @@ class postgis2mbtiles {
     --no-tile-size-limit \
     --no-tile-compression \
     --force \
+    -z ${this.config.maxzoom} \
+    -Z ${this.config.minzoom} \
     --name="${this.config.name}"  \
     --description="${this.config.description}" \
     --attribution="${this.config.attribution}" \
